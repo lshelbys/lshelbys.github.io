@@ -3,42 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shelbys blog</title>
+    <title>lshelbys | Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pine: '#064E3B',
+                        offwhite: '#FAFAF9'
+                    },
+                    fontFamily: {
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, .serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+        .post-card {
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+            border-color: #064E3B;
+        }
+
+        .tag {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .featured-card {
+            background: linear-gradient(135deg, #064E3B 0%, #065f47 100%);
+        }
+
+        nav a.active {
+            color: #064E3B;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 40px;
+            height: 2px;
+            background-color: #064E3B;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            animation: fadeUp 0.5s ease forwards;
+        }
+        .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body class="bg-offwhite text-stone-900">
 
     <!-- Navigation -->
-    <nav class="flex justify-between items-center p-8">
-        <h1 class="text-2xl font-bold">lshelbys</h1>
-        <div class="space-x-6 text-lg">
-            <a href="https://github.com/lshelbys" class="hover:text-blue-600">GitHub</a>
-            <a href="https://www.docucraft.site" class="hover:text-blue-600">DocuCraft</a>
+    <nav class="border-b border-stone-200 bg-offwhite/90 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 md:px-8 h-16 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-3xl text-pine tracking-tight">Shelbys</a>
+            <a href="https://github.com/lshelbys" target="_blank" class="text-stone-500 hover:text-pine transition" aria-label="GitHub">
+                <i data-lucide="github" class="w-6 h-6"></i>
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-            <h2 class="text-5xl font-bold mb-6">Hello, I'm shelbys</h2>
-            <p class="text-xl text-gray-600 mb-8">
-                Developer based in Kuwait. Currently working on document processing tools 
-                and exploring new technologies.
-            </p>
-            <div class="space-x-4">
-                <a href="https://www.docucraft.site" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">Check out DocuCraft ✎</a>
-            </div>
-        </div>
+    <main class="max-w-5xl mx-auto px-6 md:px-8 py-16">
 
-        <!-- Placeholder for your projects -->
-        <div class="grid grid-cols-3 gap-4">
-            <div class="col-span-2 row-span-2 bg-blue-600 h-48 rounded-xl flex items-center justify-center text-white font-bold">DocuCraft</div>
-            <div class="bg-blue-600 h-48 rounded-xl"></div>
-            <div class="bg-blue-600 h-48 rounded-xl"></div>
-            <div class="bg-blue-600 h-48 rounded-xl"></div>
-            <div class="bg-blue-600 h-48 rounded-xl"></div>
-        </div>
+        <!-- Page Header -->
+        <header class="mb-16 fade-up">
+            <p class="tag text-pine mb-3">Writing</p>
+            <h1 class="text-5xl md:text-6xl text-stone-900 mb-5 leading-tight">Blog</h1>
+            <p class="text-stone-500 text-lg max-w-xl font-light">Thoughts on engineering, building things, and navigating a world increasingly shaped by software.</p>
+        </header>
+
+        <!-- Featured Post -->
+        <section class="mb-16 fade-up fade-up-delay-1">
+            <div class="featured-card rounded-2xl p-8 md:p-12 text-white">
+                <span class="inline-block text-xs font-medium bg-white/20 text-white px-3 py-1 rounded-full mb-6 tag tracking-wider">Featured</span>
+                <h2 class="font-serif text-3xl md:text-4xl mb-4 leading-snug">Why I Started Building DocuCraft</h2>
+                <p class="text-white/75 text-base mb-8 max-w-2xl font-light leading-relaxed">
+                    Privacy-focused document processing shouldn't require signing up. Here's the story behind building a frictionless, zero-signup PDF platform — and what I learned about shipping fast.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4 text-sm text-white/60">
+                        <span>May 2025</span>
+                        <span>·</span>
+                        <span>5 min read</span>
+                    </div>
+                    <a href="#" class="flex items-center gap-2 text-sm font-medium text-white hover:gap-3 transition-all">
+                        Read post <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Post Grid -->
+        <section class="fade-up fade-up-delay-2">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-xl font-medium text-stone-900">All Posts</h3>
+                <div class="flex gap-2">
+                    <button class="tag text-pine border border-pine/40 px-3 py-1 rounded-full text-xs hover:bg-pine hover:text-white transition">All</button>
+                    <button class="tag text-stone-400 border border-stone-200 px-3 py-1 rounded-full text-xs hover:border-pine hover:text-pine transition">Dev</button>
+                    <button class="tag text-stone-400 border border-stone-200 px-3 py-1 rounded-full text-xs hover:border-pine hover:text-pine transition">Projects</button>
+                </div>
+            </div>
+
+            <div class="space-y-px">
+
+                <!-- Post 1 -->
+                <a href="#" class="post-card group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 bg-white border border-stone-200 rounded-xl p-6 block">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="tag text-pine bg-pine/8 px-2 py-0.5 rounded">Projects</span>
+                        </div>
+                        <h4 class="font-medium text-stone-900 text-lg mb-1 group-hover:text-pine transition">World Monitor Tool: Tracking Global Metrics in Real Time</h4>
+                        <p class="text-stone-500 text-sm font-light line-clamp-2">A walkthrough of building a global data monitoring dashboard — the architecture decisions, data sources, and edge cases I didn't expect.</p>
+                    </div>
+                    <div class="flex md:flex-col items-center md:items-end gap-4 md:gap-1 shrink-0">
+                        <span class="text-xs text-stone-400 whitespace-nowrap">Apr 2025</span>
+                        <span class="text-xs text-stone-400">4 min</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-stone-300 group-hover:text-pine group-hover:translate-x-1 transition-all hidden md:block"></i>
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="#" class="post-card group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 bg-white border border-stone-200 rounded-xl p-6 block mt-3">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="tag text-amber-700 bg-amber-50 px-2 py-0.5 rounded">Dev</span>
+                        </div>
+                        <h4 class="font-medium text-stone-900 text-lg mb-1 group-hover:text-pine transition">What Systems Engineering Taught Me About Software</h4>
+                        <p class="text-stone-500 text-sm font-light line-clamp-2">The disciplines overlap more than you'd think. How thinking in systems — feedback loops, failure modes, interfaces — changes the way I write code.</p>
+                    </div>
+                    <div class="flex md:flex-col items-center md:items-end gap-4 md:gap-1 shrink-0">
+                        <span class="text-xs text-stone-400 whitespace-nowrap">Mar 2025</span>
+                        <span class="text-xs text-stone-400">6 min</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-stone-300 group-hover:text-pine group-hover:translate-x-1 transition-all hidden md:block"></i>
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="#" class="post-card group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 bg-white border border-stone-200 rounded-xl p-6 block mt-3">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="tag text-pine bg-pine/8 px-2 py-0.5 rounded">Projects</span>
+                        </div>
+                        <h4 class="font-medium text-stone-900 text-lg mb-1 group-hover:text-pine transition">Shipping a Side Project Without Burning Out</h4>
+                        <p class="text-stone-500 text-sm font-light line-clamp-2">Lessons from building and launching DocuCraft as a student. Scope, momentum, and knowing when something is "done enough."</p>
+                    </div>
+                    <div class="flex md:flex-col items-center md:items-end gap-4 md:gap-1 shrink-0">
+                        <span class="text-xs text-stone-400 whitespace-nowrap">Feb 2025</span>
+                        <span class="text-xs text-stone-400">3 min</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-stone-300 group-hover:text-pine group-hover:translate-x-1 transition-all hidden md:block"></i>
+                    </div>
+                </a>
+
+                <!-- Post 4 — coming soon placeholder -->
+                <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 bg-stone-50 border border-dashed border-stone-200 rounded-xl p-6 mt-3 opacity-60">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="tag text-stone-400 bg-stone-100 px-2 py-0.5 rounded">Coming soon</span>
+                        </div>
+                        <h4 class="font-medium text-stone-400 text-lg mb-1">Next post in progress...</h4>
+                        <p class="text-stone-400 text-sm font-light">Working on something new. Check back soon.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Newsletter / Footer CTA -->
+        <section class="mt-20 fade-up fade-up-delay-3">
+            <div class="border border-stone-200 rounded-2xl p-8 md:p-10 bg-white flex flex-col md:flex-row md:items-center gap-6">
+                <div class="flex-1">
+                    <div class="divider"></div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-2">Follow along on GitHub</h3>
+                    <p class="text-stone-500 text-sm font-light">See what I'm currently building — code, commits, and projects in progress.</p>
+                </div>
+                <a href="https://github.com/lshelbys" target="_blank"
+                   class="flex items-center gap-2 bg-pine text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-pine/90 transition whitespace-nowrap self-start md:self-auto">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    github.com/lshelbys
+                </a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-stone-200 mt-24">
+        <div class="max-w-5xl mx-auto px-6 md:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <span class="font-serif text-pine text-lg">lshelbys</span>
+            <p class="text-xs text-stone-400">Systems engineering student. Building things that matter.</p>
+            <a href="https://github.com/lshelbys" class="text-stone-400 hover:text-pine transition" target="_blank">
+                <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
